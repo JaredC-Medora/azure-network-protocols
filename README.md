@@ -67,7 +67,30 @@ Steps:
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+<h2>Observe ICMP Traffic between VMs</h2>
+
+   1. Install Wireshark on the Windows 10 VM:
+      - Once the Windows 10 VM is running, log in using Remote Desktop.
+      - Open a web browser on the Windows 10 VM, download and install Wireshark from wireshark.org.
+
+   2. Start Packet Capture in Wireshark:
+      - Open Wireshark on the Windows 10 VM.
+      - Start a new packet capture on the appropriate network interface (e.g., Ethernet or Wi-Fi).
+
+3. Filter for ICMP Traffic:
+      - In Wireshark, apply a filter to show only ICMP traffic:
+        - In the filter bar, type: icmp and press Enter.
+
+4. Ping the Ubuntu VM:
+On the Windows 10 VM, open Command Prompt or PowerShell and type:
+ ping [Private IP address of Ubuntu VM]
+     - Replace [Private IP address of Ubuntu VM] with the actual private IP address of your Ubuntu VM.
+     - Observe the ping requests and ping replies in Wireshark.
+
+5. Ping a Public Website:
+From the Windows 10 VM, open Command Prompt or PowerShell and type:
+ ping google.com
+     - Observe the ICMP traffic from the public website in Wireshark.
 </p>
 <br />
 
