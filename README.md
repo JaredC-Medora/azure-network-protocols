@@ -97,8 +97,62 @@ From the Windows 10 VM, open Command Prompt or PowerShell and type:
 <p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+<h2>Configure Firewall (Network Security Group) and Inspect More Traffic</h2>
+
+1. Observe and Control ICMP Traffic:
+Initiate a Perpetual Ping from the Windows 10 VM to the Ubuntu VM by running the following command in PowerShell:
+ ping [Ubuntu VM IP address] -t
+
+
+ - Disable ICMP Traffic:
+   - In the Azure portal, go to Network Security Groups.
+   - Find the NSG associated with the Ubuntu VM.
+   - Under Inbound security rules, add a rule to Deny ICMP (type ICMP and set the action to Deny).
+ - Observe in Wireshark:
+   - Return to Wireshark and observe the lack of ICMP traffic in the capture.
+   - The perpetual ping should stop.
+ - Re-enable ICMP Traffic:
+   - Go back to the Network Security Group and remove or disable the Deny ICMP rule.
+ - Observe the Traffic Again:
+   - In Wireshark, observe the ICMP traffic return, and the perpetual ping should resume.
+
+2. Observe SSH Traffic:
+ - Start a Packet Capture in Wireshark and filter for SSH traffic:
+   - Use the filter: tcp.port == 22.
+ - SSH into the Ubuntu VM from the Windows 10 VM:
+Open PowerShell on the Windows VM and run:
+ ssh labuser@[Private IP address of Ubuntu VM]
+
+   - Type the password when prompted.
+ - Observe the SSH Traffic in Wireshark as you interact with the Ubuntu VM.
+ - Exit the SSH session by typing exit and pressing Enter.
+
+3. Observe DHCP Traffic:
+ - Start a Packet Capture in Wireshark and filter for DHCP traffic:
+   - Use the filter: dhcp.
+ - Renew the IP Address of the Windows 10 VM:
+Open PowerShell as an Administrator and run:
+ ipconfig /renew
+
+ - Observe the DHCP traffic in Wireshark, which will show the DHCP request and response.
+
+4. Observe DNS Traffic:
+ - Start a Packet Capture in Wireshark and filter for DNS traffic:
+   - Use the filter: dns.
+ - Use nslookup to query for the IP addresses of websites like google.com and disney.com:
+In PowerShell or Command Prompt:
+ nslookup google.com
+nslookup disney.com
+
+ - Observe the DNS traffic in Wireshark as DNS queries are sent and responses are received.
+
+5. Observe RDP Traffic:
+ - Start a Packet Capture in Wireshark and filter for RDP traffic:
+   - Use the filter: tcp.port == 3389.
+ - Observe the constant stream of RDP traffic:
+   - RDP (Remote Desktop Protocol) continuously sends traffic for the live stream of a remote desktop session.
+   - Observe the traffic in Wireshark. It's constant because RDP keeps sending updates for the live session.
+
 </p>
 <br />
 
