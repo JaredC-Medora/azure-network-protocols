@@ -95,7 +95,7 @@ From the Windows 10 VM, open Command Prompt or PowerShell and type:
 <br />
 
 <p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://imgur.com/a/YL6Si9s" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <h2>Configure Firewall (Network Security Group) and Inspect More Traffic</h2>
 
