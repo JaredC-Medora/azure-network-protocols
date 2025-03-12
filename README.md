@@ -64,7 +64,7 @@ Steps:
       - Networking: Select the Virtual Network and Subnet created for your Windows VM.
       - Click Review + Create, and then click Create.
 <p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://imgur.com/a/YL6Si9s" height="80%" width="80%"/>
 </p>
 <p>
 <h2>Observe ICMP Traffic between VMs</h2>
