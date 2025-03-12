@@ -221,6 +221,6 @@ nslookup disney.com
 <p>
 </p>
 <p>
-PLEASE DO NOT FORGET TO DELETE/PAUSE ALL VMs in Azure to Reduce ANY costs or charges
+<h2>PLEASE DO NOT FORGET TO DELETE/PAUSE ALL VMs in Azure to Reduce ANY costs or charges</h2>
 </p>
 <br />
